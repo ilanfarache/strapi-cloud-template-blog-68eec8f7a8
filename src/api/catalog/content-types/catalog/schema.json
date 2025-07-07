@@ -20,12 +20,6 @@
     "Price": {
       "type": "biginteger"
     },
-    "category_presses": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category-press.category-press",
-      "inversedBy": "catalogs"
-    },
     "pictures": {
       "type": "media",
       "multiple": true,
@@ -35,6 +29,37 @@
         "videos",
         "audios"
       ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "catalogs"
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "new",
+        "occasion"
+      ]
+    },
+    "weight": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "revision": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
     }
   }
 }

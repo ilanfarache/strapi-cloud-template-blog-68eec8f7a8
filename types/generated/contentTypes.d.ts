@@ -452,9 +452,10 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    category_presses: Schema.Attribute.Relation<
+    address: Schema.Attribute.String;
+    categories: Schema.Attribute.Relation<
       'manyToMany',
-      'api::category-press.category-press'
+      'api::category.category'
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -466,48 +467,22 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
       'api::catalog.catalog'
     > &
       Schema.Attribute.Private;
+    manufacturer: Schema.Attribute.String;
+    model: Schema.Attribute.String;
     pictures: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
     Price: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
+    revision: Schema.Attribute.String;
     Title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['new', 'occasion']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCategoryPressCategoryPress
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'category_presses';
-  info: {
-    displayName: 'Category_press';
-    pluralName: 'category-presses';
-    singularName: 'category-press';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    catalogs: Schema.Attribute.Relation<'manyToMany', 'api::catalog.catalog'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    ligne_de_decoupage: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category-press.category-press'
-    > &
-      Schema.Attribute.Private;
-    press: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    redresseur: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
+    weight: Schema.Attribute.String;
+    year: Schema.Attribute.String;
   };
 }
 
@@ -524,6 +499,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    catalogs: Schema.Attribute.Relation<'manyToMany', 'api::catalog.catalog'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1087,7 +1063,6 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::catalog.catalog': ApiCatalogCatalog;
-      'api::category-press.category-press': ApiCategoryPressCategoryPress;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -26,6 +26,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "catalogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::catalog.catalog",
+      "mappedBy": "categories"
     }
   }
 }
