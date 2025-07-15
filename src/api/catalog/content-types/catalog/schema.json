@@ -49,16 +49,16 @@
         "occasion"
       ]
     },
-    "weight": {
-      "type": "string"
-    },
     "model": {
       "type": "string"
     },
-    "revision": {
-      "type": "string"
+    "description_title": {
+      "type": "blocks"
     },
-    "address": {
+    "description_content": {
+      "type": "blocks"
+    },
+    "location": {
       "type": "string"
     }
   }

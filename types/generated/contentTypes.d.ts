@@ -451,7 +451,6 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    address: Schema.Attribute.String;
     categories: Schema.Attribute.Relation<
       'manyToMany',
       'api::category.category'
@@ -460,12 +459,15 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Description: Schema.Attribute.Blocks;
+    description_content: Schema.Attribute.Blocks;
+    description_title: Schema.Attribute.Blocks;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::catalog.catalog'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     manufacturer: Schema.Attribute.String;
     model: Schema.Attribute.String;
     pictures: Schema.Attribute.Media<
@@ -474,13 +476,11 @@ export interface ApiCatalogCatalog extends Struct.CollectionTypeSchema {
     >;
     Price: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
-    revision: Schema.Attribute.String;
     Title: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['new', 'occasion']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    weight: Schema.Attribute.String;
     year: Schema.Attribute.String;
   };
 }
