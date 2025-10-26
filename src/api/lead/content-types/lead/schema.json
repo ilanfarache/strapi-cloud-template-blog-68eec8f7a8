@@ -4,7 +4,7 @@
   "info": {
     "singularName": "lead",
     "pluralName": "leads",
-    "displayName": "lead"
+    "displayName": "Lead"
   },
   "options": {
     "draftAndPublish": true

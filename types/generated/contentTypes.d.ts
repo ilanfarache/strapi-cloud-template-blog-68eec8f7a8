@@ -576,7 +576,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiLeadLead extends Struct.CollectionTypeSchema {
   collectionName: 'leads';
   info: {
-    displayName: 'lead';
+    displayName: 'Lead';
     pluralName: 'leads';
     singularName: 'lead';
   };
