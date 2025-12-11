@@ -37,6 +37,12 @@
         "videos",
         "audios"
       ]
+    },
+    "requestType": {
+      "type": "string"
+    },
+    "creationDate": {
+      "type": "datetime"
     }
   }
 }
